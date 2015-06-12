@@ -1,6 +1,9 @@
 # Add Dependent Gems
 gem 'logstasher'
 
+# Lock Ruby version
+file '.ruby-version', '2.2.2'
+
 # Enable JSON-formatted logging in production
 application nil, env: "production" do <<-'RUBY'
 config.logstasher.enabled = true

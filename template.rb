@@ -9,6 +9,7 @@ gem_group :development, :test do
   gem 'rspec-rails'
 end
 generate(:"rspec:install")
+remove_dir('test')
 
 # Lock Ruby version
 file '.ruby-version', '2.2.2'

@@ -4,6 +4,12 @@ source_paths << File.dirname(__FILE__)
 # Add Dependent Gems
 gem 'logstasher'
 
+# Setup rspec
+gem_group :development, :test do
+  gem 'rspec-rails'
+end
+generate(:"rspec:install")
+
 # Lock Ruby version
 file '.ruby-version', '2.2.2'
 

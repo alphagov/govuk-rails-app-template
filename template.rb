@@ -69,7 +69,7 @@ gem_group :development, :test do
   gem 'simplecov-rcov', :require => false
 end
 
-inject_into_file 'spec/rails_helper.rb', after: "require 'rspec/rails'\n" do <<-'RUBY'
+prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'
 require 'simplecov'
 require 'simplecov-rcov'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter

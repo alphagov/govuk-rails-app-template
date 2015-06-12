@@ -1,8 +1,16 @@
+# Include govuk-rails-app-template root in source_paths
+source_paths << File.dirname(__FILE__)
+
 # Add Dependent Gems
 gem 'logstasher'
 
 # Lock Ruby version
 file '.ruby-version', '2.2.2'
+
+# Boilerplate README and LICENSE files
+remove_file 'README.rdoc'
+template 'templates/README.md.erb', 'README.md'
+template 'templates/LICENSE.erb', 'LICENSE'
 
 # Enable JSON-formatted logging in production
 application nil, env: "production" do <<-'RUBY'

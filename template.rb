@@ -12,6 +12,9 @@ remove_file 'README.rdoc'
 template 'templates/README.md.erb', 'README.md'
 template 'templates/LICENSE.erb', 'LICENSE'
 
+# Add a healthcheck route
+route "get '/healthcheck', :to => proc { [200, {}, ['OK']] }"
+
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'
 config.logstasher.enabled = true

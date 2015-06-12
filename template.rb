@@ -29,7 +29,7 @@ git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 gem_group :development, :test do
   gem 'rspec-rails'
 end
-generate(:"rspec:install")
+generate("rspec:install")
 remove_dir('test')
 git add: "."
 git commit: "-a -m 'Use rspec-rails for testing'"
@@ -61,3 +61,23 @@ copy_file 'templates/spec/requests/healthcheck_spec.rb', 'spec/requests/healthch
 
 git add: "."
 git commit: "-a -m 'Add healthcheck endpoint'"
+
+# Configure code coverage
+gem_group :development, :test do
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
+end
+
+inject_into_file 'spec/rails_helper.rb', after: "require 'rspec/rails'\n" do <<-'RUBY'
+require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+SimpleCov.start 'rails'
+RUBY
+end
+
+run 'bundle install'
+append_to_file '.gitignore', "/coverage\n"
+
+git add: "."
+git commit: "-a -m 'Use simplecov for code coverage reporting'"

@@ -5,8 +5,8 @@ GOV.UK stack.
 
 ## How to use
 
-```
-rails new [app_name] - http://raw.github.com/govuk-rails-app-template/master/template.rb
+```shell
+rails new APP_NAME -m http://raw.github.com/govuk-rails-app-template/master/template.rb
 ```
 
 ## What it will do

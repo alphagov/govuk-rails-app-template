@@ -23,8 +23,9 @@ template 'templates/LICENSE.erb', 'LICENSE'
 copy_file 'templates/jenkins.sh', 'jenkins.sh'
 template  'templates/jenkins_branches.sh.erb', 'jenkins_branches.sh'
 
-# Add a healthcheck route
+# Add a healthcheck route and specs
 route "get '/healthcheck', :to => proc { [200, {}, ['OK']] }"
+copy_file 'templates/spec/requests/healthcheck_spec.rb', 'spec/requests/healthcheck_spec.rb'
 
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'

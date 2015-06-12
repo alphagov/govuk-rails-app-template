@@ -27,8 +27,9 @@ git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 
 # Setup rspec
 gem_group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.3.0'
 end
+run 'bundle install'
 generate("rspec:install")
 remove_dir('test')
 git add: "."

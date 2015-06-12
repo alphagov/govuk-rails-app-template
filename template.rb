@@ -12,6 +12,10 @@ remove_file 'README.rdoc'
 template 'templates/README.md.erb', 'README.md'
 template 'templates/LICENSE.erb', 'LICENSE'
 
+# Boilerplate jenkins scripts
+copy_file 'templates/jenkins.sh', 'jenkins.sh'
+template  'templates/jenkins_branches.sh.erb', 'jenkins_branches.sh'
+
 # Add a healthcheck route
 route "get '/healthcheck', :to => proc { [200, {}, ['OK']] }"
 

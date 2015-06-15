@@ -7,7 +7,7 @@ git add: "."
 git commit: "-a -m 'Bare Rails application\nGenerated using https://github.com/alphagov/govuk-rails-app-template'"
 
 # Configure JSON-formatted logging
-gem 'logstasher'
+gem 'logstasher', '0.6.5'
 run 'bundle install'
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'
@@ -27,7 +27,7 @@ git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 
 # Setup rspec
 gem_group :development, :test do
-  gem 'rspec-rails', '~> 3.3.0'
+  gem 'rspec-rails', '~> 3.3'
 end
 run 'bundle install'
 generate("rspec:install")
@@ -67,8 +67,8 @@ git commit: "-a -m 'Add healthcheck endpoint'"
 
 # Configure code coverage
 gem_group :development, :test do
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
+  gem 'simplecov', '0.10.0', :require => false
+  gem 'simplecov-rcov', '0.2.3', :require => false
 end
 
 prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'

@@ -1,6 +1,8 @@
 # Include govuk-rails-app-template root in source_paths
 source_paths << File.dirname(__FILE__)
 
+gem 'unicorn', '~> 4.9.0'
+
 run 'bundle install'
 git :init
 git add: "."

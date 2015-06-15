@@ -85,3 +85,11 @@ append_to_file '.gitignore', "/coverage\n"
 
 git add: "."
 git commit: "-a -m 'Use simplecov for code coverage reporting'"
+
+# Add airbrake for errbit error reporting
+gem 'plek', '~> 1.10'
+gem 'airbrake', '~> 4.2.1'
+initializer "airbrake.rb", File.read("#{File.dirname(__FILE__)}/templates/initializers/airbrake.rb")
+run 'bundle install'
+git add: "."
+git commit: "-a -m 'Add airbrake for errbit error reporting'"

@@ -4,7 +4,8 @@ source_paths << File.dirname(__FILE__)
 run 'bundle install'
 git :init
 git add: "."
-git commit: "-a -m 'Bare Rails application\nGenerated using https://github.com/alphagov/govuk-rails-app-template'"
+command = "#{File.basename($0)} #{ARGV.join(' ')}"
+git commit: "-a -m 'Bare Rails application\n\nGenerated using https://github.com/alphagov/govuk-rails-app-template\nCommand: #{command}'"
 
 # Configure JSON-formatted logging
 gem 'logstasher', '0.6.5'

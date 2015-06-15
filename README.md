@@ -6,7 +6,7 @@ GOV.UK stack.
 ## How to use
 
 ```shell
-rails new APP_NAME -m http://raw.github.com/govuk-rails-app-template/master/template.rb
+RBENV_VERSION=2.2.2 rails new APP_NAME --skip-javascript --skip-test-unit --skip-spring -m govuk-rails-app-template/template.rb
 ```
 
 ## What it will do

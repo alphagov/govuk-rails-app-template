@@ -13,19 +13,21 @@ RBENV_VERSION=2.2.2 rails new APP_NAME --skip-javascript --skip-test-unit --skip
 
 1. Build a new rails 4 application
 
-1. Install rspec/rails for testing and remove test/unit
+2. Install rspec/rails for testing and remove test/unit
 
-2. Add a template README.md and LICENSE file
+3. Add a template README.md and LICENSE file
 
-3. Add a route for a /healthcheck endpoint
+4. Add a route for a /healthcheck endpoint
 
-4. Enable JSON-formatted logging
+5. Enable JSON-formatted logging
 
-5. Add scripts for jenkins master and branch builds
+6. Add scripts for jenkins master and branch builds
 
-6. Add a .ruby-version file
+7. Add a .ruby-version file
 
-7. Set up coverage reporting with simplecov
+8. Set up coverage reporting with simplecov
+
+9. Set up airbrake for errbit-based error reporting
 
 
 Further details on setting up a new Rails application on the GOV.UK stack can be

@@ -15,7 +15,7 @@ run 'bundle install'
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'
 config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new(Rails.root.join("/log/production.json.log"))
+  config.logstasher.logger = Logger.new(Rails.root.join("log/production.json.log"))
   config.logstasher.suppress_app_log = true
 RUBY
 end

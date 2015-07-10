@@ -10,7 +10,7 @@ command = "#{File.basename($0)} #{ARGV.join(' ')}"
 git commit: "-a -m 'Bare Rails application\n\nGenerated using https://github.com/alphagov/govuk-rails-app-template\nCommand: #{command}'"
 
 # Configure JSON-formatted logging
-gem 'logstasher', '0.6.5'
+gem 'logstasher', '0.6.2' # 0.6.5+ change the json schema used for events
 run 'bundle install'
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'

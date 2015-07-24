@@ -53,10 +53,8 @@ git add: "."
 git commit: "-a -m 'Add README.md and LICENSE'"
 
 # Boilerplate jenkins scripts
-copy_file 'templates/jenkins.sh', 'jenkins.sh'
-template  'templates/jenkins_branches.sh.erb', 'jenkins_branches.sh'
+template 'templates/jenkins.sh.erb', 'jenkins.sh'
 chmod 'jenkins.sh', 0755
-chmod 'jenkins_branches.sh', 0755
 
 git add: "."
 git commit: "-a -m 'Add Jenkins scripts'"

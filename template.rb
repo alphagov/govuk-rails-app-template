@@ -44,13 +44,13 @@ file '.ruby-version', "2.2.2\n"
 git add: "."
 git commit: "-a -m 'Lock Ruby version'"
 
-# Boilerplate README and LICENSE files
+# Boilerplate README and LICENCE files
 remove_file 'README.rdoc'
 template 'templates/README.md.erb', 'README.md'
-template 'templates/LICENSE.erb', 'LICENSE'
+template 'templates/LICENCE.erb', 'LICENCE'
 
 git add: "."
-git commit: "-a -m 'Add README.md and LICENSE'"
+git commit: "-a -m 'Add README.md and LICENCE'"
 
 # Boilerplate jenkins scripts
 copy_file 'templates/jenkins.sh', 'jenkins.sh'

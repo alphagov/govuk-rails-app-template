@@ -15,7 +15,7 @@ RBENV_VERSION=2.2.2 rails new APP_NAME --skip-javascript --skip-test-unit --skip
 
 2. Install rspec/rails for testing and remove test/unit
 
-3. Add a template README.md and LICENSE file
+3. Add a template README.md and LICENCE file
 
 4. Add a route for a /healthcheck endpoint
 
@@ -35,4 +35,4 @@ found over on the [Ops Manual](https://github.gds/pages/gds/opsmanual/infrastruc
 
 ## Licence
 
-[MIT License](LICENSE)
+[MIT License](LICENCE)

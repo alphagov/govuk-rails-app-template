@@ -39,7 +39,7 @@ git add: "."
 git commit: "-a -m 'Use rspec-rails for testing'"
 
 # Lock Ruby version
-file '.ruby-version', "2.2.2\n"
+file '.ruby-version', "2.2.3\n"
 
 git add: "."
 git commit: "-a -m 'Lock Ruby version'"

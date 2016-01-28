@@ -68,7 +68,7 @@ git add: "."
 git commit: "-a -m 'Add Jenkins scripts'"
 
 # Add a healthcheck route and specs
-route "get '/healthcheck', :to => proc { [200, {}, ['OK']] }"
+route "get '/healthcheck', to: proc { [200, {}, ['OK']] }"
 copy_file 'templates/spec/requests/healthcheck_spec.rb', 'spec/requests/healthcheck_spec.rb'
 
 git add: "."

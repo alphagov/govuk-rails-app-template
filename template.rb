@@ -40,6 +40,7 @@ git commit: "-a -m 'Use rspec-rails for testing'"
 
 # Lock Ruby version
 file '.ruby-version', "2.2.3\n"
+prepend_to_file('Gemfile') { "ruby File.read('.ruby-version').strip\n" }
 
 git add: "."
 git commit: "-a -m 'Lock Ruby version'"

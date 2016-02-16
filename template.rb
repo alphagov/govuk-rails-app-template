@@ -38,6 +38,14 @@ remove_dir('test')
 git add: "."
 git commit: "-a -m 'Use rspec-rails for testing'"
 
+# Add govuk-lint
+gem_group :development, :test do
+  gem 'govuk-lint'
+end
+run 'bundle install'
+git add: "."
+git commit: "-a -m 'Add govuk-lint for enforcing GOV.UK styleguide'"
+
 # Lock Ruby version
 file '.ruby-version', "2.2.3\n"
 prepend_to_file('Gemfile') { "ruby File.read('.ruby-version').strip\n" }
@@ -61,7 +69,7 @@ git add: "."
 git commit: "-a -m 'Add Jenkins scripts'"
 
 # Add a healthcheck route and specs
-route "get '/healthcheck', :to => proc { [200, {}, ['OK']] }"
+route "get '/healthcheck', to: proc { [200, {}, ['OK']] }"
 copy_file 'templates/spec/requests/healthcheck_spec.rb', 'spec/requests/healthcheck_spec.rb'
 
 git add: "."

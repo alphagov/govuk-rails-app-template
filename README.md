@@ -6,7 +6,7 @@ GOV.UK stack.
 ## How to use
 
 ```shell
-RBENV_VERSION=2.2.3 rails new APP_NAME --skip-javascript --skip-test-unit --skip-spring -m govuk-rails-app-template/template.rb
+RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip-spring -m govuk-rails-app-template/template.rb
 ```
 
 ## What it will do

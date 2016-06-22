@@ -47,7 +47,7 @@ git add: "."
 git commit: "-a -m 'Add govuk-lint for enforcing GOV.UK styleguide'"
 
 # Lock Ruby version
-file '.ruby-version', "2.2.3\n"
+file '.ruby-version', "2.3.0\n"
 prepend_to_file('Gemfile') { "ruby File.read('.ruby-version').strip\n" }
 
 git add: "."

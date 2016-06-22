@@ -28,6 +28,12 @@ initializer "logstasher.rb", File.read("#{File.dirname(__FILE__)}/templates/init
 git add: "."
 git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 
+# Add deprecated_columns (assumes a DB exists for at least the users table)
+gem 'deprecated_columns'
+run 'bundle install'
+git add: "."
+git commit: "-a -m 'Add deprecated_columns to guide removing DB columns'"
+
 # Setup rspec and useful testing tools
 gem_group :development, :test do
   gem 'rspec-rails', '~> 3.3'

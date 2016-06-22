@@ -28,15 +28,18 @@ initializer "logstasher.rb", File.read("#{File.dirname(__FILE__)}/templates/init
 git add: "."
 git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 
-# Setup rspec
+# Setup rspec and useful testing tools
 gem_group :development, :test do
   gem 'rspec-rails', '~> 3.3'
+  gem 'webmock', require: false
+  gem 'timecop'
+  gem "factory_girl_rails", "4.7.0"
 end
 run 'bundle install'
 generate("rspec:install")
 remove_dir('test')
 git add: "."
-git commit: "-a -m 'Use rspec-rails for testing'"
+git commit: "-a -m 'Add rspec-rails and useful testing tools'"
 
 # Add govuk-lint
 gem_group :development, :test do

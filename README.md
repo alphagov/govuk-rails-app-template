@@ -12,7 +12,7 @@ RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip
 ## What it will do
 
 1. Build a new rails 4 application
-2. Install rspec/rails for testing and remove test/unit
+2. Install rspec/rails and other useful gems for testing, and remove test/unit
 3. Add a README.md and LICENSE file
 4. Add a route for a /healthcheck endpoint
 5. Enable JSON-formatted logging

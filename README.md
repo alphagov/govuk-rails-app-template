@@ -21,6 +21,7 @@ RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip
 8. Set up coverage reporting with simplecov
 9. Set up airbrake for errbit-based error reporting
 10. Add govuk-lint and run it in diff mode as part of the jenkins script
+11. Set up GDS SSO
 
 Further details on setting up a new Rails application on the GOV.UK stack can be
 found over on the [Ops Manual](https://github.gds/pages/gds/opsmanual/infrastructure/howto/setting-up-new-rails-app.html).

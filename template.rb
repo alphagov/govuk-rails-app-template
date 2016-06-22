@@ -41,6 +41,25 @@ remove_dir('test')
 git add: "."
 git commit: "-a -m 'Add rspec-rails and useful testing tools'"
 
+# Add GDS-SSO
+gem "gds-sso", "12.1.0"
+gem 'plek', '~> 1.10'
+copy_file 'templates/initializers/gds-sso.rb', 'config/initializers/gds-sso.rb'
+copy_file 'templates/spec/support/authentication_helper.rb', 'spec/support/authentication_helper.rb'
+inject_into_file 'app/controllers/application_controller.rb', after: "class ApplicationController < ActionController::Base\n" do <<-'RUBY'
+  include GDS::SSO::ControllerMethods
+
+  before_action :require_signin_permission!
+RUBY
+end
+copy_file 'templates/app/models/user.rb', 'app/models/user.rb'
+copy_file 'templates/spec/factories/user.rb', 'spec/factories/user.rb'
+copy_file 'templates/db/migrate/20160622154200_create_users.rb', 'db/migrate/20160622154200_create_users.rb'
+run 'bundle install'
+system("bundle exec rake db:create:all")
+system("bundle exec rake db:migrate")
+system("bundle exec rake db:test:prepare")
+
 # Add govuk-lint
 gem_group :development, :test do
   gem 'govuk-lint'
@@ -99,7 +118,6 @@ git add: "."
 git commit: "-a -m 'Use simplecov for code coverage reporting'"
 
 # Add airbrake for errbit error reporting
-gem 'plek', '~> 1.10'
 gem 'airbrake', '~> 4.2.1'
 initializer "airbrake.rb", File.read("#{File.dirname(__FILE__)}/templates/initializers/airbrake.rb")
 run 'bundle install'

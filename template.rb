@@ -1,7 +1,7 @@
 # Include govuk-rails-app-template root in source_paths
 source_paths << File.dirname(__FILE__)
 
-gem 'unicorn', '~> 4.9.0'
+gem 'unicorn', '~> 5.1.0'
 
 run 'bundle install'
 git :init
@@ -36,7 +36,7 @@ git commit: "-a -m 'Add deprecated_columns to guide removing DB columns'"
 
 # Setup rspec and useful testing tools
 gem_group :development, :test do
-  gem 'rspec-rails', '~> 3.3'
+  gem 'rspec-rails', '~> 3.4'
   gem 'webmock', require: false
   gem 'timecop'
   gem "factory_girl_rails", "4.7.0"
@@ -53,7 +53,7 @@ git commit: "-a -m 'Add rspec-rails and useful testing tools'"
 
 # Add GDS-SSO
 gem "gds-sso", "12.1.0"
-gem 'plek', '~> 1.10'
+gem 'plek', '~> 1.12'
 copy_file 'templates/initializers/gds-sso.rb', 'config/initializers/gds-sso.rb'
 copy_file 'templates/spec/support/authentication_helper.rb', 'spec/support/authentication_helper.rb'
 inject_into_file 'app/controllers/application_controller.rb', after: "class ApplicationController < ActionController::Base\n" do <<-'RUBY'
@@ -109,7 +109,7 @@ git commit: "-a -m 'Add healthcheck endpoint'"
 
 # Configure code coverage
 gem_group :development, :test do
-  gem 'simplecov', '0.10.0', :require => false
+  gem 'simplecov', '0.11.2', :require => false
   gem 'simplecov-rcov', '0.2.3', :require => false
 end
 
@@ -130,7 +130,7 @@ git add: "."
 git commit: "-a -m 'Use simplecov for code coverage reporting'"
 
 # Add airbrake for errbit error reporting
-gem 'airbrake', '~> 4.2.1'
+gem 'airbrake', '~> 5.4.1'
 initializer "airbrake.rb", File.read("#{File.dirname(__FILE__)}/templates/initializers/airbrake.rb")
 run 'bundle install'
 git add: "."

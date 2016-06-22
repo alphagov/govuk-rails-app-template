@@ -1,7 +1,25 @@
 # Include govuk-rails-app-template root in source_paths
 source_paths << File.dirname(__FILE__)
 
-gem 'unicorn', '~> 5.1.0'
+def gem_string(name, version, require)
+  string = %{gem "#{name}"}
+  string += %{, "#{version}"} if version
+  string += ", require: false" if require == false
+
+  string
+end
+
+def add_gem(name, version = nil, require: nil)
+  # This produces a cleaner Gemfile than using the `gem` helper.
+  inject_into_file "Gemfile", "#{gem_string(name, version, require)}\n",
+    before: "group :development, :test do\n"
+end
+
+def add_test_gem(name, version = nil, require: nil)
+  # This produces a cleaner Gemfile than using the `gem` helper.
+  inject_into_file "Gemfile", "  #{gem_string(name, version, require)}\n",
+    after: "group :development, :test do\n"
+end
 
 run 'bundle install'
 git :init
@@ -14,10 +32,10 @@ copy_file 'templates/Gemfile', 'Gemfile'
 run 'bundle install'
 git commit: "-a -m 'Start with a lean Gemfile'"
 
-gem 'unicorn', "~> 5.1.0"
+add_gem 'unicorn', "~> 5.1.0"
 
 # Configure JSON-formatted logging
-gem 'logstasher', '0.6.2' # 0.6.5+ change the json schema used for events
+add_gem 'logstasher', '0.6.2' # 0.6.5+ change the json schema used for events
 run 'bundle install'
 # Enable JSON-formatted logging in production
 environment nil, env: "production" do <<-'RUBY'
@@ -36,18 +54,18 @@ git add: "."
 git commit: "-a -m 'Use logstasher for JSON-formatted logging in production'"
 
 # Add deprecated_columns (assumes a DB exists for at least the users table)
-gem 'deprecated_columns'
+add_gem 'database_cleaner'
+add_gem 'deprecated_columns'
 run 'bundle install'
 git add: "."
 git commit: "-a -m 'Add deprecated_columns to guide removing DB columns'"
 
 # Setup rspec and useful testing tools
-gem_group :development, :test do
-  gem 'rspec-rails', '~> 3.4'
-  gem 'webmock', require: false
-  gem 'timecop'
-  gem "factory_girl_rails", "4.7.0"
-end
+add_test_gem 'rspec-rails', '~> 3.4'
+add_test_gem 'webmock', require: false
+add_test_gem 'timecop'
+add_test_gem "factory_girl_rails", "4.7.0"
+
 run 'bundle install'
 generate("rspec:install")
 remove_file 'spec/spec_helper.rb'
@@ -59,8 +77,8 @@ git add: "."
 git commit: "-a -m 'Add rspec-rails and useful testing tools'"
 
 # Add GDS-SSO
-gem "gds-sso", "12.1.0"
-gem 'plek', '~> 1.12'
+add_gem "gds-sso", "12.1.0"
+add_gem 'plek', '~> 1.12'
 copy_file 'templates/initializers/gds-sso.rb', 'config/initializers/gds-sso.rb'
 copy_file 'templates/spec/support/authentication_helper.rb', 'spec/support/authentication_helper.rb'
 inject_into_file 'app/controllers/application_controller.rb', after: "class ApplicationController < ActionController::Base\n" do <<-'RUBY'
@@ -78,9 +96,7 @@ system("bundle exec rake db:migrate")
 system("bundle exec rake db:test:prepare")
 
 # Add govuk-lint
-gem_group :development, :test do
-  gem 'govuk-lint'
-end
+add_test_gem 'govuk-lint'
 run 'bundle install'
 git add: "."
 git commit: "-a -m 'Add govuk-lint for enforcing GOV.UK styleguide'"
@@ -115,10 +131,8 @@ git add: "."
 git commit: "-a -m 'Add healthcheck endpoint'"
 
 # Configure code coverage
-gem_group :development, :test do
-  gem 'simplecov', '0.11.2', :require => false
-  gem 'simplecov-rcov', '0.2.3', :require => false
-end
+add_test_gem 'simplecov', '0.11.2', require: false
+add_test_gem 'simplecov-rcov', '0.2.3', require: false
 
 prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'
 if ENV["RCOV"]
@@ -137,18 +151,16 @@ git add: "."
 git commit: "-a -m 'Use simplecov for code coverage reporting'"
 
 # Add airbrake for errbit error reporting
-gem 'airbrake', '~> 5.4.1'
+add_gem 'airbrake', '~> 5.4.1'
 initializer "airbrake.rb", File.read("#{File.dirname(__FILE__)}/templates/initializers/airbrake.rb")
 run 'bundle install'
 git add: "."
 git commit: "-a -m 'Add airbrake for errbit error reporting'"
 
 # Add common debuggers
-gem_group :development, :test do
-  gem 'pry'
-  gem 'byebug'
-end
+add_test_gem 'pry'
 
+# byebug is included in the Gemfile by default
 prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'
 require "pry"
 require "byebug"

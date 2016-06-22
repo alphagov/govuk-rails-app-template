@@ -127,3 +127,19 @@ initializer "airbrake.rb", File.read("#{File.dirname(__FILE__)}/templates/initia
 run 'bundle install'
 git add: "."
 git commit: "-a -m 'Add airbrake for errbit error reporting'"
+
+# Add common debuggers
+gem_group :development, :test do
+  gem 'pry'
+  gem 'byebug'
+end
+
+prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'
+require "pry"
+require "byebug"
+RUBY
+end
+
+run 'bundle install'
+git add: "."
+git commit: "-a -m 'Add common debuggers'"

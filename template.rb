@@ -9,6 +9,13 @@ git add: "."
 command = "#{File.basename($0)} #{ARGV.join(' ')}"
 git commit: "-a -m 'Bare Rails application\n\nGenerated using https://github.com/alphagov/govuk-rails-app-template\nCommand: #{command}'"
 
+remove_file 'Gemfile'
+copy_file 'templates/Gemfile', 'Gemfile'
+run 'bundle install'
+git commit: "-a -m 'Start with a lean Gemfile'"
+
+gem 'unicorn', "~> 5.1.0"
+
 # Configure JSON-formatted logging
 gem 'logstasher', '0.6.2' # 0.6.5+ change the json schema used for events
 run 'bundle install'
@@ -80,7 +87,7 @@ git commit: "-a -m 'Add govuk-lint for enforcing GOV.UK styleguide'"
 
 # Lock Ruby version
 file '.ruby-version', "2.3.0\n"
-prepend_to_file('Gemfile') { "ruby File.read('.ruby-version').strip\n" }
+prepend_to_file('Gemfile') { "ruby File.read('.ruby-version').strip\n\n" }
 
 git add: "."
 git commit: "-a -m 'Lock Ruby version'"

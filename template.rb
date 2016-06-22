@@ -114,10 +114,12 @@ gem_group :development, :test do
 end
 
 prepend_to_file 'spec/rails_helper.rb' do <<-'RUBY'
-require 'simplecov'
-require 'simplecov-rcov'
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start 'rails'
+if ENV["RCOV"]
+  require 'simplecov'
+  require 'simplecov-rcov'
+  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+  SimpleCov.start 'rails'
+end
 RUBY
 end
 

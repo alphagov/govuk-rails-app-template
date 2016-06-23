@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
 gem "rails", "4.2.6"
+gem "unicorn", "~> 5.1.0"
 group :development, :test do
   gem "byebug" # Comes standard with Rails
-  gem "sqlite3" # Remove this when you choose a production database
 end
 
 group :development do

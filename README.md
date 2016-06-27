@@ -10,7 +10,7 @@ There are four templates available, one for each category of application on GOV.
 Generally they can be invoked by updating your `rails` gem and running:
 
 ```shell
-RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip-spring -m govuk-rails-app-template/{template}.rb
+RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip-bundle --skip-spring -m govuk-rails-app-template/{template}.rb
 ```
 
 Valid values for `{template}` are:

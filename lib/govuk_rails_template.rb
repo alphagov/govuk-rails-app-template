@@ -13,6 +13,11 @@ class GovukRailsTemplate
 
     block_width = 30
 
+    puts
+    puts "=" * block_width
+
+    puts "POST-BUILD INSTRUCTIONS"
+
     puts "=" * block_width
     puts instructions.join("\n" + ("-" * block_width) + "\n")
     puts "=" * block_width

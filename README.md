@@ -7,17 +7,28 @@ GOV.UK stack.
 
 There are four templates available, one for each category of application on GOV.UK.
 
-Generally they can be invoked by updating your `rails` gem and running:
+Generally they can be invoked by updating your `rails` gem, switching into your
+GOV.UK code directory (`/var/govuk` on the VM) and running:
 
 ```shell
-RBENV_VERSION=2.3.0 rails new APP_NAME --skip-javascript --skip-test-unit --skip-bundle --skip-spring -m govuk-rails-app-template/{template}.rb
+./govuk-rails-app-template/bin/install.sh app-name (api|frontend|admin|publishing)
 ```
 
-Valid values for `{template}` are:
+You may find that the version of Rails you have doesn't match the one being generated for the app,
+in which case you should either install the matching version or update `templates/Gemfile`
+to the correct version.
+
+App names must be lowercase alpha plus hyphens, and valid values for `{template}` are:
 - api
 - admin
 - publishing
 - frontend
+
+So a valid example might be:
+
+```shell
+./govuk-rails-app-template/bin/install.sh some-fancy-api api
+```
 
 Admin and publishing apps are similar, except that publishing apps include integrations
 to the publishing API.

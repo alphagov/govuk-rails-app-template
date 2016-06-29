@@ -24,7 +24,7 @@ function error_handler {
   exit "${code}"
 }
 
-trap 'error_handler ${LINENO}' ERR
+trap "error_handler ${LINENO}" ERR
 github_status pending "is running on Jenkins"
 
 # Cleanup anything left from previous test runs

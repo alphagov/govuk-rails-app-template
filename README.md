@@ -3,33 +3,38 @@
 A template for building a skeleton Rails 4 application ready for use on the
 GOV.UK stack.
 
-## How to use
+## Usage
+
+There are four templates available, one for each category of application on GOV.UK.
+
+Generally they can be invoked by updating your `rails` gem, switching into your
+GOV.UK code directory (`/var/govuk` on the VM) and running:
 
 ```shell
-RBENV_VERSION=2.2.3 rails new APP_NAME --skip-javascript --skip-test-unit --skip-spring -m govuk-rails-app-template/template.rb
+./govuk-rails-app-template/bin/install.sh app-name (api|frontend|admin|publishing)
 ```
 
-## What it will do
+You may find that the version of Rails you have doesn't match the one being generated for the app,
+in which case you should either install the matching version or update `templates/Gemfile`
+to the correct version.
 
-1. Build a new rails 4 application
+App names must be lowercase alpha plus hyphens, and valid values for `{template}` are:
+- api
+- admin
+- publishing
+- frontend
 
-2. Install rspec/rails for testing and remove test/unit
+So a valid example might be:
 
-3. Add a template README.md and LICENSE file
+```shell
+./govuk-rails-app-template/bin/install.sh some-fancy-api api
+```
 
-4. Add a route for a /healthcheck endpoint
+Admin and publishing apps are similar, except that publishing apps include integrations
+to the publishing API.
 
-5. Enable JSON-formatted logging
-
-6. Add scripts for jenkins master and branch builds
-
-7. Add a .ruby-version file
-
-8. Set up coverage reporting with simplecov
-
-9. Set up airbrake for errbit-based error reporting
-
-10. Add govuk-lint and run it in diff mode as part of the jenkins script
+See the admin, api, frontend, and publishing classes in `lib` to see what this
+will do.
 
 Further details on setting up a new Rails application on the GOV.UK stack can be
 found over on the [Ops Manual](https://github.gds/pages/gds/opsmanual/infrastructure/howto/setting-up-new-rails-app.html).

@@ -192,10 +192,9 @@ RUBY
   end
 
   def add_jenkins_script
-    app.template "templates/jenkins.sh.erb", "jenkins.sh"
-    app.chmod "jenkins.sh", 0755
+    app.template "templates/Jenkinsfile.erb", "Jenkinsfile"
 
-    commit "Add Jenkins scripts"
+    commit "Add Jenkinsfile"
   end
 
   def add_test_coverage_reporter

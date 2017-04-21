@@ -37,7 +37,7 @@ See the admin, api, frontend, and publishing classes in `lib` to see what this
 will do.
 
 Further details on setting up a new Rails application on the GOV.UK stack can be
-found over on the [Ops Manual](https://github.gds/pages/gds/opsmanual/infrastructure/howto/setting-up-new-rails-app.html).
+found over on the [Tech Manual](https://docs.publishing.service.gov.uk/manual/setting-up-new-rails-app.html).
 
 ## Licence
 

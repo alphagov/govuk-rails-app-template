@@ -41,4 +41,4 @@ found over on the [Tech Manual](https://docs.publishing.service.gov.uk/manual/se
 
 ## Licence
 
-[MIT License](LICENSE)
+[MIT License](LICENCE)

@@ -1,6 +1,6 @@
 # GOV.UK Rails Application Template
 
-A template for building a skeleton Rails 4 application ready for use on the
+A template for building a skeleton Rails 5 application ready for use on the
 GOV.UK stack.
 
 ## Usage

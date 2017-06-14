@@ -229,7 +229,7 @@ RUBY
   end
 
   def add_errbit
-    add_gem "airbrake", "~> 5.4.1"
+    add_gem "airbrake", github: 'alphagov/airbrake', branch: 'silence-dep-warnings-for-rails-5'
     app.run "bundle install"
 
     app.copy_file "templates/config/initializers/airbrake.rb", "config/initializers/airbrake.rb"

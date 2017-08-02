@@ -104,8 +104,8 @@ RUBY
   def add_gds_sso
     setup_database
 
-    add_gem "gds-sso", "12.1.0"
-    add_gem "plek", "~> 1.12"
+    add_gem "gds-sso"
+    add_gem "plek"
 
     app.run "bundle install"
 
@@ -151,10 +151,10 @@ RUBY
   end
 
   def add_test_framework
-    add_test_gem "rspec-rails", "~> 3.4"
+    add_test_gem "rspec-rails"
     add_test_gem "webmock", require: false
     add_test_gem "timecop"
-    add_test_gem "factory_girl_rails", "4.7.0"
+    add_test_gem "factory_girl_rails"
 
     app.run "bundle install"
 
@@ -198,8 +198,8 @@ RUBY
   end
 
   def add_test_coverage_reporter
-    add_test_gem "simplecov", "0.11.2", require: false
-    add_test_gem "simplecov-rcov", "0.2.3", require: false
+    add_test_gem "simplecov", require: false
+    add_test_gem "simplecov-rcov", require: false
 
     app.run "bundle install"
 
@@ -253,8 +253,8 @@ RUBY
   end
 
   def add_form_builder
-    add_gem "selectize-rails", "~> 0.12"
-    add_gem "generic_form_builder", "~> 0.13"
+    add_gem "selectize-rails"
+    add_gem "generic_form_builder"
 
     app.run "bundle install"
 
@@ -272,9 +272,9 @@ RUBY
   end
 
   def add_frontend_development_libraries
-    add_gem "sass-rails", "~> 5.0"
-    add_gem "uglifier", ">= 1.3.0"
-    add_gem "quiet_assets", "1.1.0"
+    add_gem "sass-rails"
+    add_gem "uglifier"
+    add_gem "quiet_assets"
 
     app.run "bundle install"
 
@@ -282,7 +282,7 @@ RUBY
   end
 
   def add_govuk_admin_frontend_template
-    add_gem "govuk_admin_template", "~> 3.5"
+    add_gem "govuk_admin_template"
 
     app.run "bundle install"
 
@@ -292,8 +292,8 @@ RUBY
   end
 
   def add_browser_testing_framework
-    add_gem "capybara", "~> 2.7"
-    add_gem "poltergeist", "~> 1.9"
+    add_gem "capybara"
+    add_gem "poltergeist"
 
     app.run "bundle install"
 
@@ -304,17 +304,17 @@ RUBY
 
   def add_gds_api_adapters
     # The version of mime-types which rest-client relies on must be below 3.0
-    add_gem "mime-types", "2.99.2"
+    add_gem "mime-types"
     app.run "bundle update mime-types"
 
-    add_gem "gds-api-adapters", "~> 31.1"
+    add_gem "gds-api-adapters"
     app.run "bundle install"
 
     commit "Add GDS API adapters"
   end
 
   def add_sidekiq
-    add_gem "govuk_sidekiq", "~> 0.0"
+    add_gem "govuk_sidekiq"
 
     app.run "bundle install"
 
@@ -325,10 +325,10 @@ RUBY
 
   def add_content_schema_helpers
     # The version of addressable which json-schema relies on must be ~> 2.3.7
-    add_gem "addressable", "~> 2.3.7"
+    add_gem "addressable"
     app.run "bundle update addressable"
 
-    add_gem "govuk-content-schema-test-helpers", "~> 1.4"
+    add_gem "govuk-content-schema-test-helpers"
     app.run "bundle install"
 
     commit "Add GOV.UK content schema test helpers"
@@ -337,7 +337,7 @@ RUBY
   end
 
   def add_frontend_application_libraries
-    add_gem "slimmer", "~> 9.1"
+    add_gem "slimmer"
     add_gem "govuk_frontend_toolkit"
 
     app.run "bundle install"

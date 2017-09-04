@@ -13,7 +13,7 @@ class GovukAdminTemplate < GovukRailsTemplate
     add_jenkins_script
     add_test_coverage_reporter
     add_health_check
-    add_errbit
+    add_govuk_app_config
     add_debuggers
     add_form_builder
     add_frontend_development_libraries

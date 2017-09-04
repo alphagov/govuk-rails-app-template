@@ -228,13 +228,10 @@ RUBY
     commit "Add healthcheck endpoint"
   end
 
-  def add_errbit
-    add_gem "airbrake", github: 'alphagov/airbrake', branch: 'silence-dep-warnings-for-rails-5'
+  def add_govuk_app_config
+    add_gem "govuk_app_config"
     app.run "bundle install"
-
-    app.copy_file "templates/config/initializers/airbrake.rb", "config/initializers/airbrake.rb"
-
-    commit "Add airbrake for errbit error reporting"
+    commit "Add govuk_app_config for error reporting"
   end
 
   def add_debuggers

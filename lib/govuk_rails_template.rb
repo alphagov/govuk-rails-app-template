@@ -44,7 +44,7 @@ private
   end
 
   def add_json_logging
-    add_gem "logstasher", "0.6.2" # 0.6.5+ change the json schema used for events
+    add_gem "logstasher", "1.2.1"
     app.run "bundle install"
 
     # Enable JSON-formatted logging in production

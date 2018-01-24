@@ -177,7 +177,7 @@ RUBY
   end
 
   def lock_ruby_version
-    app.add_file ".ruby-version", "2.3.0\n"
+    app.add_file ".ruby-version", "2.4.2\n"
     app.prepend_to_file("Gemfile") { %{ruby File.read(".ruby-version").strip\n\n} }
 
     commit "Lock Ruby version"

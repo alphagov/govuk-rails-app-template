@@ -192,7 +192,7 @@ RUBY
   end
 
   def add_jenkins_script
-    app.template "templates/Jenkinsfile.erb", "Jenkinsfile"
+    app.template "templates/Jenkinsfile", "Jenkinsfile"
 
     commit "Add Jenkinsfile"
   end

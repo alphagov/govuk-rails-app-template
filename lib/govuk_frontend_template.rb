@@ -4,7 +4,6 @@ class GovukFrontendTemplate < GovukRailsTemplate
   def apply
     create_bare_rails_app
     add_gemfile
-    add_json_logging
     add_test_framework
     add_linter
     lock_ruby_version

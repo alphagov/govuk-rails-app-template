@@ -43,28 +43,6 @@ private
     commit "Start with a lean Gemfile"
   end
 
-  def add_json_logging
-    add_gem "logstasher", "0.6.2" # 0.6.5+ change the json schema used for events
-    app.run "bundle install"
-
-    # Enable JSON-formatted logging in production
-    app.environment nil, env: "production" do <<-'RUBY'
-  config.logstasher.enabled = true
-  config.logstasher.logger = Logger.new(Rails.root.join("log/production.json.log"))
-  config.logstasher.suppress_app_log = true
-RUBY
-    end
-
-    # Remove the default log formatter
-    app.gsub_file "config/environments/production.rb", "config.log_formatter = ::Logger::Formatter.new", "# config.log_formatter = ::Logger::Formatter.new"
-
-    # Configure JSON-formatted logging with additional fields
-    app.copy_file "templates/config/initializers/logstasher.rb", "config/initializers/logstasher.rb"
-
-    app.git add: "."
-    commit "Use logstasher for JSON-formatted logging in production"
-  end
-
   def setup_database
     return if @database_created
 
@@ -231,7 +209,10 @@ RUBY
   def add_govuk_app_config
     add_gem "govuk_app_config"
     app.run "bundle install"
-    commit "Add govuk_app_config for error reporting"
+
+    app.copy_file "templates/config/unicorn.rb", "config/unicorn.rb"
+
+    commit "Add govuk_app_config for error reporting, stats, logging and unicorn"
   end
 
   def add_debuggers

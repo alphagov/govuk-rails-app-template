@@ -14,9 +14,7 @@ class GovukAdminTemplate < GovukRailsTemplate
     add_health_check
     add_govuk_app_config
     add_debuggers
-    add_form_builder
     add_frontend_development_libraries
-    add_govuk_admin_frontend_template
     add_browser_testing_framework
     add_gds_api_adapters
   end

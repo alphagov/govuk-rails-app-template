@@ -230,25 +230,6 @@ RUBY
     commit "Add common debuggers"
   end
 
-  def add_form_builder
-    add_gem "selectize-rails"
-    add_gem "generic_form_builder"
-
-    app.run "bundle install"
-
-    app.application do <<-'RUBY'
-# Better forms
-    require "admin_form_builder"
-    config.action_view.default_form_builder = AdminFormBuilder
-    config.action_view.field_error_proc = proc {|html_tag, _| html_tag }
-RUBY
-    end
-
-    app.copy_file "templates/lib/admin_form_builder.rb", "lib/admin_form_builder.rb"
-
-    commit "Add a form builder"
-  end
-
   def add_frontend_development_libraries
     add_gem "sass-rails"
     add_gem "uglifier"
@@ -257,16 +238,6 @@ RUBY
     app.run "bundle install"
 
     commit "Add frontend development libraries"
-  end
-
-  def add_govuk_admin_frontend_template
-    add_gem "govuk_admin_template"
-
-    app.run "bundle install"
-
-    commit "Add the admin frontend template"
-
-    instructions << "Setup the admin template as per https://github.com/alphagov/govuk_admin_template#govuk-admin-template"
   end
 
   def add_browser_testing_framework

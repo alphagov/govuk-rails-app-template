@@ -132,7 +132,7 @@ RUBY
     add_test_gem "rspec-rails"
     add_test_gem "webmock", require: false
     add_test_gem "timecop"
-    add_test_gem "factory_girl_rails"
+    add_test_gem "factory_bot_rails"
 
     app.run "bundle install"
 

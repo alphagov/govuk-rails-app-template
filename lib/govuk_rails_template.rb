@@ -132,7 +132,7 @@ RUBY
     add_test_gem "rspec-rails"
     add_test_gem "webmock", require: false
     add_test_gem "timecop"
-    add_test_gem "factory_girl_rails"
+    add_test_gem "factory_bot_rails"
 
     app.run "bundle install"
 
@@ -155,7 +155,7 @@ RUBY
   end
 
   def lock_ruby_version
-    app.add_file ".ruby-version", "2.4.2\n"
+    app.add_file ".ruby-version", "2.4.4\n"
     app.prepend_to_file("Gemfile") { %{ruby File.read(".ruby-version").strip\n\n} }
 
     commit "Lock Ruby version"
@@ -213,6 +213,8 @@ RUBY
     app.copy_file "templates/config/unicorn.rb", "config/unicorn.rb"
 
     commit "Add govuk_app_config for error reporting, stats, logging and unicorn"
+
+    instructions << "Add healthchecks for your app: https://github.com/alphagov/govuk_app_config#healthchecks"
   end
 
   def add_debuggers
@@ -230,25 +232,6 @@ RUBY
     commit "Add common debuggers"
   end
 
-  def add_form_builder
-    add_gem "selectize-rails"
-    add_gem "generic_form_builder"
-
-    app.run "bundle install"
-
-    app.application do <<-'RUBY'
-# Better forms
-    require "admin_form_builder"
-    config.action_view.default_form_builder = AdminFormBuilder
-    config.action_view.field_error_proc = proc {|html_tag, _| html_tag }
-RUBY
-    end
-
-    app.copy_file "templates/lib/admin_form_builder.rb", "lib/admin_form_builder.rb"
-
-    commit "Add a form builder"
-  end
-
   def add_frontend_development_libraries
     add_gem "sass-rails"
     add_gem "uglifier"
@@ -257,16 +240,6 @@ RUBY
     app.run "bundle install"
 
     commit "Add frontend development libraries"
-  end
-
-  def add_govuk_admin_frontend_template
-    add_gem "govuk_admin_template"
-
-    app.run "bundle install"
-
-    commit "Add the admin frontend template"
-
-    instructions << "Setup the admin template as per https://github.com/alphagov/govuk_admin_template#govuk-admin-template"
   end
 
   def add_browser_testing_framework

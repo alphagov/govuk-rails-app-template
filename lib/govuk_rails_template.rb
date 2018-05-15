@@ -213,6 +213,8 @@ RUBY
     app.copy_file "templates/config/unicorn.rb", "config/unicorn.rb"
 
     commit "Add govuk_app_config for error reporting, stats, logging and unicorn"
+
+    instructions << "Add healthchecks for your app: https://github.com/alphagov/govuk_app_config#healthchecks"
   end
 
   def add_debuggers

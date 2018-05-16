@@ -253,10 +253,6 @@ RUBY
   end
 
   def add_gds_api_adapters
-    # The version of mime-types which rest-client relies on must be below 3.0
-    add_gem "mime-types"
-    app.run "bundle update mime-types"
-
     add_gem "gds-api-adapters"
     app.run "bundle install"
 

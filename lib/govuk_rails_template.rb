@@ -161,7 +161,7 @@ RUBY
   end
 
   def add_readme_and_licence
-    app.remove_file "README.rdoc"
+    app.remove_file "README.md"
     app.template "templates/README.md.erb", "README.md"
     app.template "templates/LICENCE.erb", "LICENCE"
 

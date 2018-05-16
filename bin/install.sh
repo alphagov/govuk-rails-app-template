@@ -24,5 +24,5 @@ else
   echo "You're using an unexpected Rails version, either install version $expected_rails or upgrade the template to $actual_rails."
 fi
 
-set RBENV_VERSION=2.3.0
+set RBENV_VERSION=2.4.4
 rails new $app_name --skip-javascript --skip-test-unit --skip-bundle --skip-spring -m govuk-rails-app-template/$template.rb

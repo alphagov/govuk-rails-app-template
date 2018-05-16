@@ -241,8 +241,8 @@ RUBY
   end
 
   def add_browser_testing_framework
-    add_gem "capybara"
-    add_gem "poltergeist"
+    add_test_gem "capybara"
+    add_test_gem "poltergeist"
 
     app.run "bundle install"
 

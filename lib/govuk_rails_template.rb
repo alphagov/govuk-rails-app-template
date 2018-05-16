@@ -235,7 +235,6 @@ RUBY
   def add_frontend_development_libraries
     add_gem "sass-rails"
     add_gem "uglifier"
-    add_gem "quiet_assets"
 
     app.run "bundle install"
 

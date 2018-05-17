@@ -155,14 +155,13 @@ RUBY
   end
 
   def lock_ruby_version
-    app.add_file ".ruby-version", "2.4.4\n"
     app.prepend_to_file("Gemfile") { %{ruby File.read(".ruby-version").strip\n\n} }
 
     commit "Lock Ruby version"
   end
 
   def add_readme_and_licence
-    app.remove_file "README.rdoc"
+    app.remove_file "README.md"
     app.template "templates/README.md.erb", "README.md"
     app.template "templates/LICENCE.erb", "LICENCE"
 
@@ -235,7 +234,6 @@ RUBY
   def add_frontend_development_libraries
     add_gem "sass-rails"
     add_gem "uglifier"
-    add_gem "quiet_assets"
 
     app.run "bundle install"
 
@@ -243,8 +241,8 @@ RUBY
   end
 
   def add_browser_testing_framework
-    add_gem "capybara"
-    add_gem "poltergeist"
+    add_test_gem "capybara"
+    add_test_gem "poltergeist"
 
     app.run "bundle install"
 
@@ -254,10 +252,6 @@ RUBY
   end
 
   def add_gds_api_adapters
-    # The version of mime-types which rest-client relies on must be below 3.0
-    add_gem "mime-types"
-    app.run "bundle update mime-types"
-
     add_gem "gds-api-adapters"
     app.run "bundle install"
 

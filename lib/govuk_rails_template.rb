@@ -95,7 +95,7 @@ RUBY
     app.inject_into_file "app/controllers/application_controller.rb", after: "class ApplicationController < ActionController::Base\n" do <<-"RUBY"
   include GDS::SSO::ControllerMethods
 
-  before_action :authenticate_user!!
+  before_action :authenticate_user!
 
 RUBY
     end

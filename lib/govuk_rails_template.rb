@@ -306,7 +306,7 @@ RUBY
   def add_gem(name, version = nil, require: nil, comment: nil)
     # This produces a cleaner Gemfile than using the `gem` helper.
     app.inject_into_file "Gemfile", "#{gem_string(name, version, require, comment)}\n",
-      before: "group :development, :test do\n"
+      before: "\ngroup :development, :test do\n"
   end
 
   def add_test_gem(name, version = nil, require: nil, comment: nil)

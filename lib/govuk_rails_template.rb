@@ -46,11 +46,13 @@ private
   def setup_database
     return if @database_created
 
-    add_test_gem "sqlite3", comment: "Remove this when you choose a production database"
-    add_gem "database_cleaner"
-    add_gem "deprecated_columns"
+    add_gem "pg"
+    add_test_gem "database_cleaner"
 
     app.run "bundle install"
+
+    app.copy_file "templates/config/database.yml", "config/database.yml", force: true
+    app.gsub_file "config/database.yml", "appname_here", app.app_path.gsub("-", "_")
 
     system("bundle exec rake db:create:all")
     system("bundle exec rake db:migrate")

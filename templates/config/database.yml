@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  pool: 5
+
+development:
+  <<: *default
+  database: appname_here_development
+  url: <%= ENV["DATABASE_URL"] %>
+
+test:
+  <<: *default
+  database: appname_here_test
+  url: <%= ENV["DATABASE_URL"].try(:sub, /([-_]development)?$/, '_test') %>
+
+production:
+  <<: *default
+  database: appname_here_development
+  url: <%= ENV["DATABASE_URL"] %>

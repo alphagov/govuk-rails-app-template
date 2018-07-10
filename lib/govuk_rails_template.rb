@@ -176,17 +176,13 @@ RUBY
 
   def add_test_coverage_reporter
     add_test_gem "simplecov", require: false
-    add_test_gem "simplecov-rcov", require: false
 
     app.run "bundle install"
 
     app.prepend_to_file "spec/rails_helper.rb" do <<-'RUBY'
-if ENV["RCOV"]
-  require "simplecov"
-  require "simplecov-rcov"
-  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-  SimpleCov.start "rails"
-end
+require "simplecov"
+
+SimpleCov.start "rails"
 RUBY
     end
 
@@ -223,8 +219,8 @@ RUBY
     app.run "bundle install"
 
     app.prepend_to_file "spec/spec_helper.rb" do <<-'RUBY'
-  require "pry"
-  require "byebug"
+require "pry"
+require "byebug"
 RUBY
     end
 

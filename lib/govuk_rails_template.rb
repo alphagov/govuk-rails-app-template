@@ -200,8 +200,6 @@ RUBY
 
   def add_health_check
     app.route %{get "/healthcheck", to: proc { [200, {}, ["OK"]] }}
-    app.copy_file "templates/spec/requests/healthcheck_spec.rb", "spec/requests/healthcheck_spec.rb"
-
     commit "Add healthcheck endpoint"
   end
 

@@ -25,4 +25,4 @@ else
 fi
 
 set RBENV_VERSION=2.4.4
-rails new $app_name --skip-javascript --skip-test-unit --skip-bundle --skip-spring -m govuk-rails-app-template/$template.rb
+rails new $app_name --skip-javascript --skip-test-unit --skip-bundle --skip-spring --skip-action-cable --skip-action-mailer --skip-active-storage -m govuk-rails-app-template/$template.rb

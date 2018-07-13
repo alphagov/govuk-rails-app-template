@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This repository is no longer maintained. It is replaced by the [GOV.UK Developer Docs](https://docs.publishing.service.gov.uk/manual/setting-up-new-rails-app.html#header).
+
 # GOV.UK Rails Application Template
 
 A template for building a skeleton Rails 5 application ready for use on the
